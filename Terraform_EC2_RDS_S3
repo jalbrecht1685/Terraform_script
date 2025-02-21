@@ -1,0 +1,37 @@
+provider "aws" {
+    region = "" # Use current location 
+}
+
+# S3 Bucket
+resource "aws_s3_bucket" "bucket name"  {
+    bucket = "bucket name"
+    ac1    = "private"
+}
+
+# EC2 Instance
+resource "aws_instance" "name" {
+  ami           ="ami-" # customer can choose ami to use
+  instance_type = "" # customer can choose the size to use
+  key_name      = "" # use customer key-pair  
+ 
+  tags = {
+    Name = "" # Name of instance
+  }  
+  }
+
+# RDS instance 
+resource "aws_db_instance" "name" {
+  identifier             = "database name"
+  engine                 = "mysql"
+  instance_class         = "processing and memory class"
+  allocated_storage      = "storage size"
+  username               = ""
+  password               = "" # use AWS secrets manager in produciton 
+  parameter_group_name   = "default.mysql18.0"  
+  skip_final_snapshot    = "true"
+
+  tags = {
+    Name = "RDS Instance name"
+  } 
+  
+}
